@@ -1,0 +1,40 @@
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe.config
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\bin\Debug\ConvertImage.pdb
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csprojResolveAssemblyReference.cache
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.MainForm.resources
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.Properties.Resources.resources
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.GenerateResource.Cache
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.exe
+C:\Users\kumar\Documents\Visual Studio 2017\Projects\ConvertImage\ConvertImage\obj\Debug\ConvertImage.pdb
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe.config
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.pdb
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csprojAssemblyReference.cache
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.MainForm.resources
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.Properties.Resources.resources
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.GenerateResource.cache
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.exe
+C:\Users\krema\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.pdb
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe.config
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\bin\Debug\ConvertImage.pdb
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csprojResolveAssemblyReference.cache
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.MainForm.resources
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.Properties.Resources.resources
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.GenerateResource.Cache
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.exe
+C:\Users\kumar\Desktop\Кисель лаба 2\ConvertImage\ConvertImage\obj\Debug\ConvertImage.pdb
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe.config
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\bin\Debug\ConvertImage.exe
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\bin\Debug\ConvertImage.pdb
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csprojResolveAssemblyReference.cache
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.MainForm.resources
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.Properties.Resources.resources
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.GenerateResource.Cache
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.exe
+C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.pdb
