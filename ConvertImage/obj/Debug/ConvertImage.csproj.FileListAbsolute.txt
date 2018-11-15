@@ -38,3 +38,13 @@ C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.G
 C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
 C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.exe
 C:\Users\kumar\Desktop\ConvertImage\ConvertImage\obj\Debug\ConvertImage.pdb
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\bin\Debug\ConvertImage.exe.config
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\bin\Debug\ConvertImage.exe
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\bin\Debug\ConvertImage.pdb
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.csprojAssemblyReference.cache
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.MainForm.resources
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.Properties.Resources.resources
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.csproj.GenerateResource.cache
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.csproj.CoreCompileInputs.cache
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.exe
+C:\Users\krema\Documents\Visual Studio 2017\Projects\ImageConverter\ConvertImage\obj\Debug\ConvertImage.pdb

@@ -9,6 +9,7 @@ using ConvertImage.Properties;
 using System;
 using System.Collections;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ConvertImage
@@ -16,7 +17,7 @@ namespace ConvertImage
     public partial class MainForm : Form
     {
         //Загрузка изначальной фотографии (размер должен совпадать с размером дисплея)
-        private Bitmap sourceImage = Resources.Romanov;
+        private Bitmap sourceImage = null;
         //Глобальная переменная для трансформированной фотки
         private Bitmap convertedImage = null;
         //Ширина фото для тестового показа в программе
@@ -24,32 +25,51 @@ namespace ConvertImage
         //Разрешение рисования тестовых фото
         private bool allowToDraw = false;
         //Порог яркости пикселя для его осветления на дисплее
-        private int brightnessTreshold = 160; //От 0 до 255
+        private TrackBar brightnessTrackBar = new TrackBar(); //От 0 до 255
         //Порог считывания цвета (чем ниже - тем светлее будут фото на дисплее)
-        private int colorTreshold = 100; //От 0 до 255
+        private TrackBar colorTrackBar = new TrackBar(); //От 0 до 255
+        //
+        private OpenFileDialog openFile = new OpenFileDialog();
+        //
+        private Size buttonSize;
+        private Size labelSize;
+        private RichTextBox TextBox = new RichTextBox();
 
         public MainForm()
         {
             InitializeComponent();
-            //Конвертированные байты
-            Byte[] pixelBytes = null;
-            convertedImage = ConvertImage(sourceImage, out pixelBytes);
-            allowToDraw = true;
-            Invalidate();
-            //Переменная для рассчета размера тестового фото
-            int x = imageWidth / sourceImage.Width;
+            
+            openFile.Multiselect = false;
+            openFile.RestoreDirectory = true;
+            openFile.Filter = "Image Files(*.PNG; *.JPG; *.BMP)| *.PNG; *.JPG; *.BMP | All files(*.*) | *.*";
+            openFile.CheckFileExists = true;
+            openFile.CheckPathExists = true;
+            Button button = new Button();
+            button.Click += new EventHandler(this.ButtonClick);
+            using (Graphics cg = this.CreateGraphics())
+            {
+                SizeF size = cg.MeasureString("Open Image...", button.Font);
+                button.Width = (int)size.Width+10;
+                button.Text = "Open Image...";
+                buttonSize = button.Size;
+            }
+            button.Location = new Point(0,0);
+            Controls.Add(button);
 
-            //Установка размера формы под фото
-            this.Size = new Size(sourceImage.Width * x * 2+10, sourceImage.Height * x * 2);
+            colorTrackBar.Minimum = 1;
+            brightnessTrackBar.Minimum = 1;
 
-            //Размещение и программирование текстовой коробочки для вывода байтов
-            RichTextBox TextBox = new RichTextBox();
-            TextBox.Location = new Point(0, sourceImage.Height * x);
-            TextBox.Size = new Size(Width - SystemInformation.VerticalScrollBarWidth, Height - (sourceImage.Height * x) - SystemInformation.HorizontalScrollBarHeight*2);
-            TextBox.ReadOnly = true;
-            TextBox.Text = StringFromByteArray(pixelBytes);
-            Controls.Add(TextBox);
+            colorTrackBar.Maximum = 255;
+            brightnessTrackBar.Maximum = 255;
+
+            colorTrackBar.Value = 125;
+            brightnessTrackBar.Value = 170;
+
+            colorTrackBar.ValueChanged += new EventHandler(TrackBarValueChanged);
+            brightnessTrackBar.ValueChanged += new EventHandler(TrackBarValueChanged);
         }
+
+
         //Метод конвертации фото в 16-ти цветный формат
         private Bitmap ConvertImage(Bitmap SourceImage, out Byte[] Pixels)
         {
@@ -85,7 +105,7 @@ namespace ConvertImage
 
 
 
-                    if (iR >= colorTreshold)
+                    if (iR >= colorTrackBar.Value)
                     {
                         newByte[2] = true;
                         rArr[7] = true;
@@ -93,7 +113,7 @@ namespace ConvertImage
                     else
                         rArr[7] = false;
 
-                    if (iG >= colorTreshold)
+                    if (iG >= colorTrackBar.Value)
                     {
                         newByte[1] = true;
                         gArr[7] = true;
@@ -101,7 +121,7 @@ namespace ConvertImage
                     else
                         gArr[7] = false;
 
-                    if (iB >= colorTreshold)
+                    if (iB >= colorTrackBar.Value)
                     {
                         newByte[0] = true;
                         bArr[7] = true;
@@ -109,14 +129,14 @@ namespace ConvertImage
                     else
                         bArr[7] = false;
 
-                    if (iR < colorTreshold)
-                        iR = colorTreshold;
-                    if (iG < colorTreshold)
-                        iG = colorTreshold;
-                    if (iB < colorTreshold)
-                        iB = colorTreshold;
+                    if (iR < colorTrackBar.Value)
+                        iR = colorTrackBar.Value;
+                    if (iG < colorTrackBar.Value)
+                        iG = colorTrackBar.Value;
+                    if (iB < colorTrackBar.Value)
+                        iB = colorTrackBar.Value;
 
-                    if ((iR+iG+iB)/3 >= brightnessTreshold)
+                    if ((iR+iG+iB)/3 >= brightnessTrackBar.Value)
                     {
                         newByte[3] = true;
                     }
@@ -162,14 +182,14 @@ namespace ConvertImage
         //Событие рисования фото в форме
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            int x = imageWidth / sourceImage.Width;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             if (allowToDraw)
             {
-                e.Graphics.DrawImage(sourceImage, 0, 0, sourceImage.Width * x, sourceImage.Height * x);
+                int x = imageWidth / sourceImage.Width;
+                e.Graphics.DrawImage(sourceImage, 0, colorTrackBar.Location.Y + colorTrackBar.Height, sourceImage.Width * x, sourceImage.Height * x);
 
                 if (!convertedImage.Equals(null))
-                    e.Graphics.DrawImage(convertedImage, sourceImage.Width * x, 0, convertedImage.Width * x, convertedImage.Height * x);
+                    e.Graphics.DrawImage(convertedImage, brightnessTrackBar.Location.X, brightnessTrackBar.Location.Y + brightnessTrackBar.Height, convertedImage.Width * x, convertedImage.Height * x);
             }
         }
         //Конвертация BitArray в Byte
@@ -223,6 +243,86 @@ namespace ConvertImage
             bitArray.CopyTo(array, 0);
             return array[0];
 
+        }
+        //Событие нажатия кнопки
+        private void ButtonClick(object sender, EventArgs e)
+        {
+            if(openFile.ShowDialog().Equals(DialogResult.OK))
+            {
+                using (Image image = Image.FromStream(openFile.OpenFile()))
+                {
+                    //Загрузка и перевод фото в битмэп
+                    sourceImage = new Bitmap(image);
+                    int x = imageWidth / sourceImage.Width;
+
+                    //Программирование строки размера фото
+                    Label label = new Label();
+                    label.Text = sourceImage.Width + " x " + sourceImage.Height;
+                    using (Graphics cg = this.CreateGraphics())
+                    {
+                        SizeF size = cg.MeasureString(label.Text, label.Font);
+                        label.Width = (int)size.Width + 10;
+                        labelSize = label.Size;
+                    }
+                    label.Location = new Point(buttonSize.Width + 10,5);
+                    Controls.Add(label);
+
+                    //Программирование строки порога цвета
+                    Label colorLabel = new Label();
+                    colorLabel.Text = "Color Treshold";
+                    colorLabel.Width = imageWidth;
+                    colorLabel.Location = new Point(5, buttonSize.Height+5);
+                    Controls.Add(colorLabel);
+
+                    //Программирование трэкбара цвета
+                    colorTrackBar.Width = colorLabel.Width;
+                    colorTrackBar.Location = new Point(0, colorLabel.Location.Y+colorLabel.Height);
+                    Controls.Add(colorTrackBar);
+                    
+                    //Программирование строки порога яркости
+                    Label brightnessLabel = new Label();
+                    brightnessLabel.Text = "Brightness Treshold";
+                    brightnessLabel.Width = imageWidth;
+                    brightnessLabel.Location = new Point(colorLabel.Width+5, buttonSize.Height+5);
+                    Controls.Add(brightnessLabel);
+
+                    //Программирование трэкбара яркости
+                    brightnessTrackBar.Width = brightnessLabel.Width;
+                    brightnessTrackBar.Location = new Point(brightnessLabel.Location.X, brightnessLabel.Location.Y + brightnessLabel.Height);
+                    Controls.Add(brightnessTrackBar);
+
+                    //Размещение и программирование текстовой коробочки для вывода байтов
+                    TextBox.Location = new Point(0, colorTrackBar.Location.Y + sourceImage.Height * x + colorTrackBar.Height + 10);
+                    TextBox.Size = new Size(Width - SystemInformation.VerticalScrollBarWidth, 150);
+                    TextBox.ReadOnly = true;
+                    Controls.Add(TextBox);
+
+                    DisplayImage();
+                }
+            }
+        }
+        //Конвертация фото, получение байтов и вывод
+        private void DisplayImage()
+        {
+            //Конвертированные байты
+            Byte[] pixelBytes = null;
+            convertedImage = ConvertImage(sourceImage, out pixelBytes);
+            allowToDraw = true;
+            Invalidate();
+
+            TextBox.Text = StringFromByteArray(pixelBytes);
+        }
+        //
+        private void TrackBarValueChanged(object sender, EventArgs e)
+        {
+            DisplayImage();
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            MinimumSize = new Size(this.Width, this.Height);
+            MaximumSize = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
     }
 }
